@@ -53,7 +53,7 @@ function HeaderCarousel() {
                 <h3 className="display-4 text-white font-weight-semi-bold mb-4">
                   {slide.title}
                 </h3>
-                <a href="#" className="btn btn-light py-2 px-3">
+                <a href="/shop" className="btn btn-light py-2 px-3">
                   Shop Now
                 </a>
               </div>

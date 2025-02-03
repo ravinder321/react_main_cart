@@ -8,8 +8,8 @@ function ProductList() {
     // Fetch products from API based on categoryId
     useEffect(() => {
         const url = categoryId 
-            ? `http://localhost/laravel-shoping-cart/public/products/${categoryId}`
-            : 'http://localhost/laravel-shoping-cart/public/products';
+            ? `https://ravinder.freelogomaker.in/products/${categoryId}`
+            : 'https://ravinder.freelogomaker.in/products';
 
         fetch(url)
             .then((response) => response.json())
@@ -28,16 +28,6 @@ function ProductList() {
                         <div className="col-12 pb-1">
                             <div className="d-flex align-items-center justify-content-between mb-4">
                                 <div className="dropdown ml-4">
-                                    <button
-                                        className="btn border dropdown-toggle"
-                                        type="button"
-                                        id="triggerId"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        Sort by
-                                    </button>
                                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
                                         <button className="dropdown-item" onClick={() => {}}>
                                             Latest
@@ -76,11 +66,6 @@ function ProductList() {
                                         <form action={`/cart/${product.id}`} className="mr-2">
                                             <button type="submit" className="btn btn-sm text-dark p-0">
                                                 <i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
-                                            </button>
-                                        </form>
-                                        <form action="/product/buy" method="POST">
-                                            <button type="submit" className="btn btn-sm btn-primary">
-                                                <i className="fas fa-credit-card text-light mr-1"></i>Buy Now
                                             </button>
                                         </form>
                                     </div>

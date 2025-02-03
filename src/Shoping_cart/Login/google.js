@@ -7,7 +7,7 @@ const GoogleAuth = () => {
             console.error('Google login error', response.error);
         } else {
             // Send the Google token to your backend
-            fetch('http://your-backend-url/api/google/callback', {
+            fetch('https://ravinder.freelogomaker.in/api/auth/google/callback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const GoogleAuth = () => {
     return (
         <div>
             <GoogleLogin
-                clientId="901398140959-f1kv4mp23fal0rekpbl0hcsja1q0k7bs.apps.googleusercontent.com"
+                clientId="901398140959-1ks4l2irqmlrf7e4aglusjeeg4cn3o5k.apps.googleusercontent.com"
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}

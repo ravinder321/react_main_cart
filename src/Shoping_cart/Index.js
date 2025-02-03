@@ -23,7 +23,7 @@ function App() {
               <div className="position-relative" style={{ zIndex: 1 }}>
                 <h5 className="text-uppercase text-primary mb-3">20% off the all order</h5>
                 <h1 className="mb-4 font-weight-semi-bold">Spring Collection</h1>
-                <a href="#" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                <a href="/shop" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ function App() {
               <div className="position-relative" style={{ zIndex: 1 }}>
                 <h5 className="text-uppercase text-primary mb-3">20% off the all order</h5>
                 <h1 className="mb-4 font-weight-semi-bold">Winter Collection</h1>
-                <a href="#" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                <a href="/shop" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ function Register() {
         fd.append("password", password);
 
         axios
-            .post("http://localhost/laravel-shoping-cart/public/api/register", fd)
+            .post("https://ravinder.freelogomaker.in/api/register", fd)
             .then((res) => {
                 Swal.fire({
                     title: "Reactjs",

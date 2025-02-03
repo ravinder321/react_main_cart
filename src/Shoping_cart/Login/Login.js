@@ -18,11 +18,11 @@ const Login = () => {
     const loginData = { email, password };
 
 
-    axios.post('http://localhost/laravel-shoping-cart/public/api/login', loginData, { withCredentials: true })
+    axios.post('https://ravinder.freelogomaker.in/api/login', loginData, { withCredentials: true })
     .then((res) => {
         if (res.data.success) {
           setLogin(true);
-          localStorage.setItem("token", "access");
+          localStorage.setItem("token", res.data.token);
         } else {
           Swal.fire({
             title: "Login Failed",
@@ -36,35 +36,40 @@ const Login = () => {
   };
   const handleGoogleSuccess = async (response) => {
     const token = response.credential;
-console.log(token)
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/api/google/callback",
-        { token },
-        {
-          withCredentials: true,
-        }
-      );
 
-      if (res.data.success) {
-        setLogin(true);
-        localStorage.setItem("token", res.data.token);
-      } else {
-        Swal.fire({
-          title: "Login Failed",
-          text: res.data.message || "Google login failed.",
-          icon: "error",
-        });
-      }
+    try {
+        const res = await axios.post(
+            "https://ravinder.freelogomaker.in/api/auth/google/callback",
+            { token },
+            { withCredentials: true }
+        );
+
+        if (res.data.success) {
+            localStorage.setItem("token", res.data.token);
+            setLogin(true);
+            Swal.fire({
+                title: "Success",
+                text: "Google login successful!",
+                icon: "success",
+            });
+        } else {
+            Swal.fire({
+                title: "Login Failed",
+                text: res.data.message || "Google login failed.",
+                icon: "error",
+            });
+        }
     } catch (error) {
-      console.error("Google Login Error:", error);
-      Swal.fire({
-        title: "Login Failed",
-        text: "Something went wrong. Please try again.",
-        icon: "error",
-      });
+        console.error("Google Login Error:", error);
+        Swal.fire({
+            title: "Login Failed",
+            text: "Something went wrong. Please try again.",
+            icon: "error",
+        });
     }
-  };
+};
+
+
 
     const handleFacebookSuccess = () => {
       window.FB.login(

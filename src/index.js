@@ -11,7 +11,7 @@ import './Shoping_cart/css/style.min.css';
 import App from './Shoping_cart/Route/Route';
 import reportWebVitals from './reportWebVitals';
 
-const CLIENT_ID = "901398140959-2elfuk16l10kafpjqc19i3tl22h1m8ak.apps.googleusercontent.com";
+const CLIENT_ID = "901398140959-1ks4l2irqmlrf7e4aglusjeeg4cn3o5k.apps.googleusercontent.com";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

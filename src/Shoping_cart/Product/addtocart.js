@@ -14,31 +14,36 @@ function ProductItem({ product }) {
         }
 
         const addToCart = async () => {
-                console.log('Adding to cart...');
+            console.log('Adding to cart...');
+            
+            const token = localStorage.getItem("token");
+            console.log(token);
         
-                // Retrieve the token from localStorage (or wherever you are storing it)
-                const token = localStorage.getItem('token');
+            const quantities = JSON.parse(localStorage.getItem('quantity')) || {};
+            const quantity = quantities[productId] || 1;
         
-                if (!token) {
-                    // If the token is not available, notify the user that they need to be logged in
-                    Swal.fire({
-                        title: "Error",
-                        text: "You need to be logged in to add items to your cart.",
-                        icon: "error",
-                    });
-                    return;
-                }
-                    const response = await axios.post(
-                    `http://localhost:8000/api/cart/${productId}`,
-                    { email, quantity: 1 },
+            if (!token) {
+                Swal.fire({
+                    title: "Error",
+                    text: "You need to be logged in to add items to your cart.",
+                    icon: "error",
+                });
+                return;
+            }
+        
+            try {
+                const response = await axios.post(
+                    `https://ravinder.freelogomaker.in/api/cart/${productId}`,
+                    { email, quantity },  // Send correct quantity
                     {
                         headers: {
-                            'Authorization': `Bearer ${token}`, // Send token in headers
-                            'Content-Type': 'application/json', // Ensure proper content type
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json',
                         },
                     }
                 );
-                console.log('Response:', response);    
+        
+                console.log('Response:', response);
                 if (response.data.success) {
                     setLoading(true);
                     Swal.fire({
@@ -52,8 +57,12 @@ function ProductItem({ product }) {
                         text: response.data.message || "Something went wrong.",
                         icon: "error",
                     });
-                }          
+                }
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+            }
         };
+        
         addToCart();
     }, [productId]); 
 

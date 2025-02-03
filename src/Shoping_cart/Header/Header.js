@@ -7,7 +7,7 @@ function Navbar() {
   const [auth, setAuth] = useState(false); // Manage authentication status
 
   useEffect(() => {
-    fetch('http://localhost/laravel-shoping-cart/public/categories')
+    fetch('https://ravinder.freelogomaker.in/categories')
       .then((response) => response.json())
       .then((data) => setCategories(data.categories))
       .catch((error) => console.error('Error fetching categories:', error));
@@ -28,28 +28,15 @@ function Navbar() {
             style={{ height: '65px', marginTop: '-1px', padding: '0 30px' }}
           >
             <h6 className="m-0">Categories</h6>
-            <i className="fa fa-angle-down text-dark"></i>
+            
           </a>
           <nav
             className="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
             id="navbar-vertical"
           >
             <div className="navbar-nav w-100 overflow-hidden" style={{ height: '410px' }}>
-              <div className="nav-item dropdown">
-                <a href="#" className="nav-link" data-toggle="dropdown">
-                  Dresses <i className="fa fa-angle-down float-right mt-1"></i>
-                </a>
-                <div className="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                  <a href="#" className="dropdown-item">
-                    Men's Dresses
-                  </a>
-                  <a href="#" className="dropdown-item">
-                    Baby's Dresses
-                  </a>
-                </div>
-              </div>
               {categories.map((category) => (
-                <Link  key={category.id}  to={`/shop?category=${category.id}`}  className="nav-item nav-link">
+                <Link  key={category.id}  to={`/shop/${category.id}`}  className="nav-item nav-link">
                   {category.category_name}
                 </Link>
               ))}
@@ -70,13 +57,7 @@ function Navbar() {
               <div className="navbar-nav mr-auto py-0">
                 <Link to="/" className="nav-item nav-link active">Home</Link>
                 <Link to="/shop" className="nav-item nav-link">Shop</Link>
-                <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                  <div className="dropdown-menu rounded-0 m-0">
-                    <Link to="/cart" className="dropdown-item">Shopping Cart</Link>
-                    <a href="#" className="dropdown-item">Checkout</a>
-                  </div>
-                </div>
+                <Link to="/cart" className="nav-item nav-link">Cart</Link>
                 <Link to="/contact" className="nav-item nav-link">Contact</Link>
               </div>
               <div className="navbar-nav ml-auto py-0">
